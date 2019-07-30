@@ -21,3 +21,30 @@
   color: #21CE99;
   border-bottom: 1px solid #21CE99;
 }
+
+.trades-table {
+  width: 100%;
+}
+
+.trades-table-header th {
+  color: #CBCBCD;
+  font-weight: 400;
+}
+
+.trade-row {
+
+}
+
+.trade-row:hover {
+  background-color: #171718;
+}
+
+.trade-row td {
+  font-weight: 100;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+td {
+  margin-top: 20px;
+}

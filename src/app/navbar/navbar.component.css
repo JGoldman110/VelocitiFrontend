@@ -13,4 +13,9 @@
 
 .menu-item {
   margin: 20px;
+  cursor: pointer;
+}
+
+.menu-item:focus {
+  outline: 0;
 }
