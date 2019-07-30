@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { StrategyListComponent } from './strategy/strategy-list/strategy-list.component';
 import { StrategyDetailComponent } from './strategy/strategy-detail/strategy-detail.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     StrategyListComponent,
-    StrategyDetailComponent
+    StrategyDetailComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
