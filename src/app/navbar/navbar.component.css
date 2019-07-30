@@ -1,0 +1,16 @@
+.nav-bar {
+  margin: 0 40px;
+}
+
+.logo {
+  float: left;
+}
+
+.menu {
+  float: right;
+  margin-top: 20px;
+}
+
+.menu-item {
+  margin: 20px;
+}

@@ -1,0 +1,42 @@
+.strategy-list {
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(0, 0, 0, 0.6);
+  width: 350px;
+  float: left;
+  height: 80%;
+}
+
+.header {
+  padding: 15px;
+  border-bottom: 1px solid #0e0d0d;
+}
+
+.strategy {
+  padding: 16px 28px;
+}
+
+.green-button {
+  float: right;
+  background: #21CE99;
+  border-radius: 6px;
+  border: none;
+}
+
+.strategy span {
+  padding-right: 40px;
+}
+
+.strategy > .status.active {
+  display: inline-block;
+  color: #21ce99;
+  background: #182b27;
+  padding: 7px;
+  border-radius: 225px;
+}
+
+.strategy > .status.stopped {
+  display: inline-block;
+  color: #f45531;
+  background: #2d201f;;
+  padding: 7px;
+  border-radius: 225px;
+}
