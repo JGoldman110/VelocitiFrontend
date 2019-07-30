@@ -3,10 +3,14 @@
 
   </div>
   <div class="menu">
-    <a href="#">Statistics</a>
-    <a class="active" href="#">Trades</a>
+    <a (click)="toggelStatistics()" [ngClass]="showStatitics ? 'active' : ''">Statistics</a>
+    <a (click)="toggelTrades()" [ngClass]="showTrades ? 'active' : ''">Trades</a>
   </div>
-  <div class="trades">
+  <div *ngIf="showStatitics" class="statistics">
+    <h1>Statistics</h1>
+  </div>
+  <div *ngIf="showTrades" class="trades">
+    <h1>Trades</h1>
     <table class="trades-table">
       <tr class="trades-table-header">
         <th align="left">Action</th>
