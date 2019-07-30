@@ -23,6 +23,26 @@
   border-bottom: 1px solid #21CE99;
 }
 
+.statistics {
+
+}
+
+.statistics-item {
+  display: flow-root;
+  padding: 10px 0px;
+  border-top: 1px solid black;
+}
+
+.statistics-item .label {
+  float: left;
+  color: #CBCBCD;
+  font-weight: 400;
+}
+
+.statistics-item .value {
+  float: right;
+}
+
 .trades-table {
   width: 100%;
 }

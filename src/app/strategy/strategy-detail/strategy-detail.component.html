@@ -3,11 +3,23 @@
 
   </div>
   <div class="menu">
+    <a (click)="toggelDetails()" [ngClass]="showDetails ? 'active' : ''">Details</a>
     <a (click)="toggelStatistics()" [ngClass]="showStatitics ? 'active' : ''">Statistics</a>
     <a (click)="toggelTrades()" [ngClass]="showTrades ? 'active' : ''">Trades</a>
   </div>
+  <div *ngIf="showDetails" class="details">
+    <h1>Details</h1>
+  </div>
   <div *ngIf="showStatitics" class="statistics">
     <h1>Statistics</h1>
+    <div class="statistics-item">
+      <span class="label">Strategy Balance</span>
+      <span class="value">$1000.55</span>
+    </div>
+    <div class="statistics-item">
+      <span class="label">Number of Trades</span>
+      <span class="value">2</span>
+    </div>
   </div>
   <div *ngIf="showTrades" class="trades">
     <h1>Trades</h1>
