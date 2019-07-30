@@ -2,3 +2,22 @@
   float: right;
   min-width: 660px;
 }
+
+.menu {
+  margin-bottom: 20px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid black;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  margin: 18px;
+  border-bottom: 1px solid black;
+  padding: 4px;
+}
+
+.menu > a.active {
+  color: #21CE99;
+  border-bottom: 1px solid #21CE99;
+}

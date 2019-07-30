@@ -8,18 +8,39 @@
 .header {
   padding: 15px;
   border-bottom: 1px solid #0e0d0d;
+  padding-bottom: 45px;
+}
+
+.strategy-title {
+  float: left;
+  margin-top: 6px;
 }
 
 .strategy {
   padding: 16px 28px;
+  cursor: pointer;
+}
+
+.strategy:hover {
+  background-color: #171718;
 }
 
 .green-button {
   float: right;
   background: #21CE99;
-  border-radius: 6px;
+  border-radius: 25px;
   border: none;
+  padding: 9px 21px;
+  font-weight: 500;
+  cursor: pointer;
 }
+
+.green-button:hover {
+  color: #21ce99;
+  background: #182b27;
+}
+
+button:focus {outline:0;}
 
 .strategy span {
   padding-right: 40px;

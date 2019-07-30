@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { StrategyListComponent } from './strategy/strategy-list/strategy-list.component';
 import { StrategyDetailComponent } from './strategy/strategy-detail/strategy-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { StrategyCreateComponent } from './strategy/strategy-create/strategy-create.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NavbarComponent,
     StrategyListComponent,
     StrategyDetailComponent,
-    DashboardComponent
+    DashboardComponent,
+    StrategyCreateComponent
   ],
   imports: [
     BrowserModule,
