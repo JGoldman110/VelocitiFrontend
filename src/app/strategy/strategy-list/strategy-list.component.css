@@ -1,14 +1,14 @@
-.strategy-list {
+.strategies {
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(0, 0, 0, 0.6);
   width: 350px;
   float: left;
-  height: 80%;
+  height: 550px;
 }
 
 .header {
-  padding: 15px;
   border-bottom: 1px solid #0e0d0d;
-  padding-bottom: 45px;
+  height: 30px;
+  padding: 15px;
 }
 
 .strategy-title {
@@ -16,9 +16,15 @@
   margin-top: 6px;
 }
 
+.strategy-list {
+  width: 100%;
+  border-collapse: collapse;
+}
+
 .strategy {
-  padding: 16px 28px;
+  width: 100%;
   cursor: pointer;
+  font-size:
 }
 
 .strategy:hover {
@@ -42,11 +48,15 @@
 
 button:focus {outline:0;}
 
+.strategy {
+  font-size: 12px;
+}
+
 .strategy span {
   padding-right: 40px;
 }
 
-.strategy > .status.active {
+.status.Active {
   display: inline-block;
   color: #21ce99;
   background: #182b27;
@@ -54,10 +64,16 @@ button:focus {outline:0;}
   border-radius: 225px;
 }
 
-.strategy > .status.stopped {
+.strategy > .status.Stopped {
   display: inline-block;
   color: #f45531;
   background: #2d201f;;
   padding: 7px;
   border-radius: 225px;
+}
+
+.strategy > .name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
