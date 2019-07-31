@@ -5,16 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './strategy-detail.component.html',
   styleUrls: ['./strategy-detail.component.css']
 })
-export class StrategyDetailComponent implements OnInit {
-  showDetails:boolen = true;
-  showStatitics:boolen = false;
+export class StrategyDetailComponent {
+  showDetails:boolean = true;
+  showStatitics:boolean = false;
   showTrades:boolean = false;
 
   constructor() {
-
-  }
-
-  OnInit() {
 
   }
 
