@@ -13,6 +13,8 @@ import { StrategyCreateComponent } from './strategy/strategy-create/strategy-cre
 
 import { StrategyService } from './service/strategy.service';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,8 @@ import { StrategyService } from './service/strategy.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [
     StrategyService

@@ -11,14 +11,14 @@ import { Router } from '@angular/router';
 export class StrategyListComponent implements OnInit {
 
   strategies: any = [];
-  strategy: any = [{"name": "test 1",
-                  "type": "TMAStrategy",
-                  "ticker": "AAPL",
-                  "quantity": "100",
-                  "limit": "10",
-                  "stop": "20",
-                  "slowAVGIntervale": "20",
-                  "fastAVGIntervale": "50"}];
+  strategy: any = {name: "test 1",
+                  type: "TMAStrategy",
+                  ticker: "AAPL",
+                  quantity: "100",
+                  limit: "10",
+                  stop: "20",
+                  slowAvgIntervale: "20",
+                  fastAvgIntervale: "50"};
 
   constructor(private strategyService: StrategyService,
               private ngZone: NgZone,
@@ -40,6 +40,15 @@ export class StrategyListComponent implements OnInit {
         console.log(value);
         if (value['status'] == "ACTIVE") {
           value['status'] = "Active";
+        }
+        if (value['status'] == "PAUSED") {
+          value['status'] = "Paused";
+        }
+        if (value['status'] == "EXITED") {
+          value['status'] = "Exited";
+        }
+        if (value['status'] == "FINISHED") {
+          value['status'] = "Finished";
         }
       })
       this.strategies = data;

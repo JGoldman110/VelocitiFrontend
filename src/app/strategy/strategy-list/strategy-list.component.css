@@ -11,26 +11,6 @@
   padding: 15px;
 }
 
-.strategy-title {
-  float: left;
-  margin-top: 6px;
-}
-
-.strategy-list {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.strategy {
-  width: 100%;
-  cursor: pointer;
-  font-size:
-}
-
-.strategy:hover {
-  background-color: #171718;
-}
-
 .green-button {
   float: right;
   background: #21CE99;
@@ -46,14 +26,45 @@
   background: #182b27;
 }
 
-button:focus {outline:0;}
+button:focus {
+  outline: 0;
+}
+
+.strategy-title {
+  float: left;
+  margin-top: 6px;
+}
+
+.strategy-list {
+  width: 100%;
+  border-collapse: collapse;
+}
 
 .strategy {
+  width: 100%;
+  cursor: pointer;
   font-size: 12px;
 }
 
-.strategy span {
-  padding-right: 40px;
+.strategy:hover {
+  background-color: #171718;
+}
+
+.strategy .name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 20px 15px;
+}
+
+.strategy .ticker {
+  padding: 15px;
+}
+
+.strategy .status {
+  margin-top: 14px;
+  width: 45px;
+  text-align: center;
 }
 
 .status.Active {
@@ -64,16 +75,18 @@ button:focus {outline:0;}
   border-radius: 225px;
 }
 
-.strategy > .status.Stopped {
+.status.Paused {
+  display: inline-block;
+  color: #E4E111;
+  background: #3c3918;
+  padding: 7px;
+  border-radius: 225px;
+}
+
+.status.Exited, .status.Finished {
   display: inline-block;
   color: #f45531;
   background: #2d201f;;
   padding: 7px;
   border-radius: 225px;
-}
-
-.strategy > .name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }

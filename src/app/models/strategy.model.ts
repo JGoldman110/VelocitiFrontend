@@ -1,5 +1,3 @@
-import {Deserializable} from './deserializable.model';
-
 export class Strategy {
   id: number;
   name: string;
@@ -7,11 +5,10 @@ export class Strategy {
   status: string;
   ticker: string;
   quantity: number;
-  limit: number;
+  limits: number;
   stop: number;
-  position: string;
-
-  deserialize(input: any): this {
-    return Object.assign(this, input);
-  }
+  currentPosition: string;
+  fastAvgIntervale: number;
+  shortBelow: boolean;
+  slowAvgIntervale: number;
 }
