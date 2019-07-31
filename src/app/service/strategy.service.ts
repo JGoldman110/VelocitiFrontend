@@ -1,51 +1,40 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../environments/environment';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { Observable, of, throwError, BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { catchError, tap, map } from 'rxjs/operators';
+import { environment } from '../../environments/environment'
 import { Strategy } from "../models/strategy.model";
+
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
+const base_url = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
 })
 export class StrategyService {
-  base_url = environment.apiUrl;
+  private _strategies: BehaviorSubject<Strategy[]>;
+  private base_url: string;
+  private dataStore: {
+    strategies: any[]
+  };
 
-  constructor(private http: HttpClient) {}
-
-  httpOptions = {
-     headers: new HttpHeaders({
-       'Content-Type': 'application/json'
-     })
-   }
-
-   GetAllStrategies(): Observable<Strategy> {
-     return this.http.get<Strategy>(this.base_url + '/strategy/getAll')
-      .pipe(
-        retry(1),
-        catchError(this.errorHandl)
-      )
-   }
-
-   CreateStrategy(data): Observable<any> {
-    return this.http.post<any>(this.base_url + '/strategy/create', JSON.stringify(data), this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    )
+  constructor(private http: HttpClient) {
+    this.base_url = environment.apiUrl;
+    this.dataStore = { strategies: [] };
+    this._strategies = <BehaviorSubject<Strategy[]>>new BehaviorSubject([]);
   }
 
-   // Error handling
-  errorHandl(error) {
-     let errorMessage = '';
-     if(error.error instanceof ErrorEvent) {
-       // Get client-side error
-       errorMessage = error.error.message;
-     } else {
-       // Get server-side error
-       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-     }
-     console.log(errorMessage);
-     return throwError(errorMessage);
+  get strategies() {
+    return this._strategies.asObservable();
+  }
+
+  loadAll() {
+    this.http.get<any[]>(this.base_url + '/strategy/getAll').subscribe(data => {
+      this.dataStore.strategies = data;
+      this._strategies.next(Object.assign({}, this.dataStore).strategies);
+      console.log(this.dataStore);
+    }, error => console.log('Could not load strategies.'));
   }
 }

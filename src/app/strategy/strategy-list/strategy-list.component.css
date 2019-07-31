@@ -67,7 +67,7 @@ button:focus {
   text-align: center;
 }
 
-.status.Active {
+.status.ACTIVE {
   display: inline-block;
   color: #21ce99;
   background: #182b27;
@@ -75,7 +75,11 @@ button:focus {
   border-radius: 225px;
 }
 
-.status.Paused {
+.status.ACTIVE:after {
+  content: 'Active';
+}
+
+.status.PAUSED {
   display: inline-block;
   color: #E4E111;
   background: #3c3918;
@@ -83,10 +87,22 @@ button:focus {
   border-radius: 225px;
 }
 
-.status.Exited, .status.Finished {
+.status.PAUSED:after {
+    content: 'Paused';
+}
+
+.status.EXITED, .status.FINISHED {
   display: inline-block;
   color: #f45531;
   background: #2d201f;;
   padding: 7px;
   border-radius: 225px;
+}
+
+.status.EXITED:after {
+  content: 'Exited';
+}
+
+.status.FINISHED:after {
+  content: 'Finished';
 }
