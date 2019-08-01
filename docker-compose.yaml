@@ -1,0 +1,14 @@
+version: '3.0'
+services:
+    angular:
+        container_name: frontend 
+        build:
+            context: .
+            dockerfile: Dockerfile-frontend
+        image: cd/frontend:LATEST        
+        volumes:
+            - '.:/frontend' 
+            - '/frontend/node_modules'
+        ports: 
+            - '80:4200'
+        restart: always

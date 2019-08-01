@@ -1,2 +1,2 @@
-<app-strategy-list></app-strategy-list>
-<app-strategy-detail></app-strategy-detail>
+<app-strategy-list (strategyClicked)="childStrategyClicked($event)"></app-strategy-list>
+<app-strategy-detail [strategyId]="clickedStrategyId"></app-strategy-detail>

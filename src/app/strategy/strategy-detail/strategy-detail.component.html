@@ -1,4 +1,8 @@
 <div class="strategy-details">
+  <h1 *ngIf="strategy">{{ strategy.name }} {{ strategy.totalPnl | currency }}</h1>
+  <p *ngIf="strategy">Indicator: <strong>{{ strategy.type }}</strong></p>
+  <p *ngIf="strategy">Ticker: <strong>{{ strategy.ticker }}</strong></p>
+  <p *ngIf="strategy" class="status {{strategy.status}}"></p>
   <div class="preformance-graph">
 
   </div>
@@ -9,12 +13,22 @@
   </div>
   <div *ngIf="showDetails" class="details">
     <h1>Details</h1>
+    <div *ngIf="strategy">
+    </div>
   </div>
   <div *ngIf="showStatitics" class="statistics">
     <h1>Statistics</h1>
     <div class="statistics-item">
+      <span class="label">Initial Capital</span>
+      <span class="value">{{strategy.initialCapital | currency}}</span>
+    </div>
+    <div class="statistics-item">
       <span class="label">Strategy Balance</span>
-      <span class="value">$1000.55</span>
+      <span class="value">{{(strategy.initialCapital + strategy.totalPnl) | currency}}</span>
+    </div>
+    <div class="statistics-item">
+      <span class="label">Strategy Preformance</span>
+      <span class="value">{{ strategy.totalPnlPercent | percent:'.2-3'}}</span>
     </div>
     <div class="statistics-item">
       <span class="label">Number of Trades</span>
@@ -32,21 +46,13 @@
         <th align="left">Time</th>
         <th align="left">Performance</th>
       </tr>
-      <tr class="trade-row">
-        <td>Sell</td>
+      <tr class="trade-row" *ngFor="let order of orders">
+        <td>{{order.buy ? 'Buy' : 'Sell'}}</td>
         <td>NASDAQ</td>
-        <td>1000</td>
-        <td>$390.48</td>
-        <td>7/20/19 3:00AM</td>
-        <td>0.5% ^ +$5.00</td>
-      </tr>
-      <tr class="trade-row">
-        <td>Buy</td>
-        <td>NASDAQ</td>
-        <td>1000</td>
-        <td>$385.33</td>
-        <td>7/20/19 6:22AM</td>
-        <td>0.48% ^ $4.80</td>
+        <td>{{strategy.quantity}}</td>
+        <td>{{order.price | currency}}</td>
+        <td>{{order.date | date: 'short'}}</td>
+        <td>{{order.pnl | currency}}</td>
       </tr>
     </table>
   </div>

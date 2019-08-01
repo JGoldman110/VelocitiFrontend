@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  name: cd-pipeline
+spec:
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfile: |-
+        pipeline {
+              agent any
+              stages {
+                stage("Clone Frontend Source") {
+                  steps {
+                    checkout([$class: 'GitSCM',
+                                branches: [[name: '*/master']],
+                                extensions: [
+                                  [$class: 'RelativeTargetDirectory', relativeTargetDir: 'cds-frontend']
+                                ],
+                                userRemoteConfigs: [[url: 'https://github.com/CitiVelociti/VelocitiFrontend.git']]
+                            ])
+                  }
+                }
+                stage("Create Build For Frontend Server") {
+                  steps {
+                    dir('cds-frontend/velociti-frontend') {
+                      sh 'oc new-build --strategy docker --binary --name frontend || echo "Build already exists"'
+                    }
+                  }
+                }
+                stage("Build Frontend Server Image") {
+                  steps {
+                    dir('cds-frontend/velociti-frontend') {
+                      sh 'cp Dockerfile-frontend Dockerfile'
+                      sh 'oc start-build frontend --from-dir . --follow && rm Dockerfile'
+                    }
+                  }
+                }
+                stage("Create persistent storage frontend") {
+                  steps {
+                    dir('cds-frontend/velociti-frontend') {
+                      sh '(oc get PersistentVolumeClaim | grep angular-claim0) || oc apply -f openshiftnew/angular-claim0-persistentvolumeclaim.yaml'
+                      sh '(oc get PersistentVolumeClaim | grep angular-claim1) || oc apply -f openshiftnew/angular-claim1-persistentvolumeclaim.yaml'
+                    }
+                  }
+                }
+                stage("Create Deployment Config Frontend") {
+                  steps {
+                    dir('cds-frontend/velociti-frontend') {
+                      sh '(oc get deploymentconfig | grep frontend) || oc apply -f openshiftnew/angular-deploymentconfig.yaml'
+                      sh 'oc expose svc/frontend || echo "frontend already exposed"'
+                    }
+                  }
+                }
+                stage("Create Services and rollout deployment") {
+                  steps {
+                    dir('cds-frontend/velociti-frontend') {
+                      sh '(oc get svc | grep frontend) || oc apply -f openshiftnew/angular-service.yaml'
+                    }
+                  }
+                }
+                stage("Create Public route") {
+                  steps {
+                    dir('cds-frontend/velociti-frontend') {
+                      sh '((oc get route | grep frontend) && echo "frontend already exposed") || oc expose svc/cds-frontend'
+                      sh 'echo "Internet route is `oc get route | awk \'{print $2}\' | grep cds-frontend`"'
+                    }
+                  }
+                }
+                stage("Clean up on Isle 4") {
+                  steps {
+                    dir('cds-frontend/velociti-frontend') {
+                      sh 'oc delete pods `oc get pods | grep \'0/1\' | awk \'{print $1}\'`'
+                    }
+                  }
+                }
+              }
+            }
+    type: JenkinsPipeline
+  triggers: []
