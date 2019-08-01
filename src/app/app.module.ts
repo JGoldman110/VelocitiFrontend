@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { StrategyCreateComponent } from './strategy/strategy-create/strategy-create.component';
 
 import { StrategyService } from './service/strategy.service';
+import { OrderService } from './service/order.service';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -31,7 +32,8 @@ import { ChartsModule } from 'ng2-charts';
     ChartsModule
   ],
   providers: [
-    StrategyService
+    StrategyService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,11 +1,11 @@
 <div class="strategies">
   <div class="header">
     <div class="strategy-title">Strategies</div>
-    <button type="button" name="button" class="green-button" (click)="onNew()">New</button>
+    <button type="button" name="button" class="green-button" (click)="reload()">New</button>
   </div>
   <div class="height" style="overflow: scroll; height: 88%">
     <table class="strategy-list">
-        <tr *ngFor="let strategy of strategies | async" class="strategy">
+        <tr *ngFor="let strategy of strategies" class="strategy" (click)="onClick(strategy.id)">
           <td class="name">{{strategy.name}}</td>
           <td>3.2M</td>
           <td class="ticker">{{strategy.ticker}}</td>
