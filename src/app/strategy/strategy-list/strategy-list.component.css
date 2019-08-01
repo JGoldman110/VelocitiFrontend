@@ -55,6 +55,7 @@ button:focus {
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 20px 15px;
+  max-width: 85px;
 }
 
 .strategy .ticker {

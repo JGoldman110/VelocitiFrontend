@@ -19,8 +19,16 @@
   <div *ngIf="showStatitics" class="statistics">
     <h1>Statistics</h1>
     <div class="statistics-item">
+      <span class="label">Initial Capital</span>
+      <span class="value">{{strategy.initialCapital | currency}}</span>
+    </div>
+    <div class="statistics-item">
       <span class="label">Strategy Balance</span>
-      <span class="value">$1000.55</span>
+      <span class="value">{{(strategy.initialCapital + strategy.totalPnl) | currency}}</span>
+    </div>
+    <div class="statistics-item">
+      <span class="label">Strategy Preformance</span>
+      <span class="value">{{ strategy.totalPnlPercent | percent:'.2-3'}}</span>
     </div>
     <div class="statistics-item">
       <span class="label">Number of Trades</span>

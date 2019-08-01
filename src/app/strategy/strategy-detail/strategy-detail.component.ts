@@ -50,7 +50,6 @@ export class StrategyDetailComponent implements OnChanges {
   updateStrategy(id: number) {
     return this.strategyService.getStrategy(id).subscribe((data: {}) => {
       this.strategy = data;
-      console.log(this.strategy);
     })
   }
 
