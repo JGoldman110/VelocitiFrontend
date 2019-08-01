@@ -12,8 +12,12 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class StrategyService {
+export class OrderService {
+  // private _strategies: BehaviorSubject<Strategy[]>;
   private base_url: string;
+  // private dataStore: {
+  //   strategies: any[]
+  // };
 
   constructor(private http: HttpClient) {
     this.base_url = environment.apiUrl;
@@ -21,13 +25,13 @@ export class StrategyService {
     // this._strategies = <BehaviorSubject<Strategy[]>>new BehaviorSubject([]);
   }
 
-  getStrategies(): Observable<any> {
-    return this.http.get(this.base_url + '/strategy/getAll');
+  getOrders(strategy_id: number): Observable<any> {
+    return this.http.get(this.base_url + '/orders/getByIdDesc/' + strategy_id);
   }
 
-  getStrategy(id): Observable<any> {
-    return this.http.get(this.base_url + '/strategy/getById/' + id)
-  }
+  // getStrategy(id): Observable<any> {
+  //   return this.http.get(this.base_url + '/strategy/getById/' + id)
+  // }
   // get strategies() {
   //   return this._strategies.asObservable();
   // }
