@@ -1,1 +1,60 @@
 <h1>strategy create</h1>
+<form [formGroup]="angForm">
+  <input type = "text"
+        name = "name"
+        placeholder = "name"
+        formControlName="name"
+        #name>
+  <br/>
+  <select class="custom-select" (change)="changeType($event)" formControlName="type">
+    <option value="" disabled>Choose your strategy type</option>
+    <option *ngFor="let type of types" [ngValue]="type">{{type}}</option>
+  </select>
+  <br/>
+  <input type = "text"
+        name = "ticker"
+        placeholder = "Ticker"
+        formControlName="ticker"
+        #ticker>
+  <br/>
+  <input type = "number"
+        name = "quantity"
+        placeholder = "Quantity"
+        formControlName="quantity"
+        #quantity>
+  <br/>
+  <input type = "number"
+        name = "slowAvgIntervale"
+        placeholder = "Slow Moving Average"
+        formControlName="slowAvgIntervale"
+        #slowAvgIntervale>
+  <br/>
+  <input type = "number"
+        name = "fastAvgIntervale"
+        placeholder = "Fast Moving Average"
+        formControlName="fastAvgIntervale"
+        #fastAvgIntervale>
+  <br/>
+  <input type = "number"
+        name = "limit"
+        placeholder = "limit"
+        formControlName="limit"
+        #limit>
+  <br/>
+  <input type = "number"
+        name = "quantity"
+        placeholder = "Quantity"
+        formControlName="quantity"
+        #quantity>
+  <br/>
+  <input type = "submit"
+          value = "submit"
+          (click) = "onClickSubmit(name.value,
+                                   type.value,
+                                   ticker.value,
+                                   quantity.value,
+                                   slowAvgIntervale.value,
+                                   fastAvgIntervale.value,
+                                   limit.value,
+                                   stop.value)" >
+</form>
