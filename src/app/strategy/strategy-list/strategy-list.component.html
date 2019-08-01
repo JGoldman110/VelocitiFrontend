@@ -7,7 +7,7 @@
     <table class="strategy-list">
         <tr *ngFor="let strategy of strategies" class="strategy" (click)="onClick(strategy.id)">
           <td class="name">{{strategy.name}}</td>
-          <td>3.2M</td>
+          <td>{{ strategy.totalPnl | currency }}</td>
           <td class="ticker">{{strategy.ticker}}</td>
           <td class="status {{strategy.status}}"></td>
         </tr>
