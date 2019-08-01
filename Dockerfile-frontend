@@ -1,21 +1,14 @@
-# STAGE 1: BUILD
-FROM node:10.15.3 AS builder
+FROM node:10.15.3
+EXPOSE 4200
 
-# RUN mkdir /frontend
-WORKDIR /frontend
-# ENV PATH /frontend/node_modules/.bin:$PATH
-COPY package*.json /frontend/
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+
+COPY ./package.json /app/package.json
 
 RUN npm install
-RUN npm install -g @angular/cli
-COPY . .
+RUN npm install -g @angular/cli@8.2.0
 
-RUN npm run build --prod --output-path=dist 
+COPY ./ /app
 
-# STAGE 2: RUN
-FROM node:10.15.3
-RUN mkdir /app
-# COPY --from=builder /frontend/dist/velociti-frontend /app
-EXPOSE 4200
-WORKDIR /app
-CMD ["ng", "serve"]
+CMD ["ng", "serve", "--host=0.0.0.0", "--port=4200", "--disableHostCheck"]
