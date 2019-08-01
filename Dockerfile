@@ -1,13 +1,13 @@
-#FROM node:10.15.3 AS builder
-#WORKDIR /frontend
-#COPY ./ /frontend
-#RUN npm install
-#RUN ng serve
+FROM node:10.15.3
 
-#RUN npm run build -- --output-path=./dist/out
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
 
-FROM nginx:alpine
-WORKDIR /frontend
+COPY ./package.json /app/package.json
 
-COPY ./dist /frontend
-#/usr/share/nginx/html/
+RUN npm install
+RUN npm install -g @angular/cli@8.2.0
+
+COPY ./ /app
+
+CMD ["ng", "serve"]
