@@ -1,5 +1,5 @@
 <div class="strategy-details">
-  <h1 *ngIf="strategy">{{ strategy.name }}</h1>
+  <h1 *ngIf="strategy">{{ strategy.name }} {{ strategy.totalPnl | currency }}</h1>
   <p *ngIf="strategy">Indicator: <strong>{{ strategy.type }}</strong></p>
   <p *ngIf="strategy">Ticker: <strong>{{ strategy.ticker }}</strong></p>
   <p *ngIf="strategy" class="status {{strategy.status}}"></p>

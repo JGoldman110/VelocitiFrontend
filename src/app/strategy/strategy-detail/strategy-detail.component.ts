@@ -26,10 +26,10 @@ export class StrategyDetailComponent implements OnChanges {
 
   ngOnChanges() {
     if (this.strategyId != null){
-      this.updateStrategy(this.strategyId);
-      this.parseStrategy
       // this.updateOrders(this.strategyId);
       interval(3000).subscribe(x => { // will execute every 3 seconds
+        this.updateStrategy(this.strategyId);
+        this.parseStrategy
         this.updateOrders(this.strategyId);
       });
     }

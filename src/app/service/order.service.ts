@@ -26,7 +26,7 @@ export class OrderService {
   }
 
   getOrders(strategy_id: number): Observable<any> {
-    return this.http.get(this.base_url + '/orders/getAllByStrategyId/' + strategy_id);
+    return this.http.get(this.base_url + '/orders/getByIdDesc/' + strategy_id);
   }
 
   // getStrategy(id): Observable<any> {
