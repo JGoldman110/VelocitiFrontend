@@ -3,7 +3,7 @@ FROM node:10.15.3 AS builder
 
 # RUN mkdir /frontend
 WORKDIR /frontend
-ENV PATH /frontend/node_modules/.bin:$PATH
+# ENV PATH /frontend/node_modules/.bin:$PATH
 COPY package*.json /frontend/
 
 RUN npm install
