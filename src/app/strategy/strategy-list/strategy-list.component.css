@@ -1,28 +1,14 @@
-.strategy-list {
+.strategies {
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(0, 0, 0, 0.6);
   width: 350px;
   float: left;
-  height: 80%;
+  height: 550px;
 }
 
 .header {
-  padding: 15px;
   border-bottom: 1px solid #0e0d0d;
-  padding-bottom: 45px;
-}
-
-.strategy-title {
-  float: left;
-  margin-top: 6px;
-}
-
-.strategy {
-  padding: 16px 28px;
-  cursor: pointer;
-}
-
-.strategy:hover {
-  background-color: #171718;
+  height: 30px;
+  padding: 15px;
 }
 
 .green-button {
@@ -40,13 +26,48 @@
   background: #182b27;
 }
 
-button:focus {outline:0;}
-
-.strategy span {
-  padding-right: 40px;
+button:focus {
+  outline: 0;
 }
 
-.strategy > .status.active {
+.strategy-title {
+  float: left;
+  margin-top: 6px;
+}
+
+.strategy-list {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.strategy {
+  width: 100%;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.strategy:hover {
+  background-color: #171718;
+}
+
+.strategy .name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 20px 15px;
+}
+
+.strategy .ticker {
+  padding: 15px;
+}
+
+.strategy .status {
+  margin-top: 14px;
+  width: 45px;
+  text-align: center;
+}
+
+.status.ACTIVE {
   display: inline-block;
   color: #21ce99;
   background: #182b27;
@@ -54,10 +75,34 @@ button:focus {outline:0;}
   border-radius: 225px;
 }
 
-.strategy > .status.stopped {
+.status.ACTIVE:after {
+  content: 'Active';
+}
+
+.status.PAUSED {
+  display: inline-block;
+  color: #E4E111;
+  background: #3c3918;
+  padding: 7px;
+  border-radius: 225px;
+}
+
+.status.PAUSED:after {
+    content: 'Paused';
+}
+
+.status.EXITED, .status.FINISHED {
   display: inline-block;
   color: #f45531;
   background: #2d201f;;
   padding: 7px;
   border-radius: 225px;
+}
+
+.status.EXITED:after {
+  content: 'Exited';
+}
+
+.status.FINISHED:after {
+  content: 'Finished';
 }

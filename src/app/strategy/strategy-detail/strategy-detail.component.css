@@ -74,3 +74,50 @@
 td {
   margin-top: 20px;
 }
+
+.status {
+  width: 45px;
+  text-align: center;
+  margin-top: 0px;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.status.ACTIVE {
+  color: #21ce99;
+  background: #182b27;
+  padding: 7px;
+  border-radius: 225px;
+}
+
+.status.ACTIVE:after {
+  content: 'Active';
+}
+
+.status.PAUSED {
+  display: inline-block;
+  color: #E4E111;
+  background: #3c3918;
+  padding: 7px;
+  border-radius: 225px;
+}
+
+.status.PAUSED:after {
+    content: 'Paused';
+}
+
+.status.EXITED, .status.FINISHED {
+  display: inline-block;
+  color: #f45531;
+  background: #2d201f;;
+  padding: 7px;
+  border-radius: 225px;
+}
+
+.status.EXITED:after {
+  content: 'Exited';
+}
+
+.status.FINISHED:after {
+  content: 'Finished';
+}
