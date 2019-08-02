@@ -1,60 +1,81 @@
-<h1>strategy create</h1>
-<form [formGroup]="angForm">
-  <input type = "text"
-        name = "name"
-        placeholder = "name"
-        formControlName="name"
-        #name>
-  <br/>
-  <select class="custom-select" (change)="changeType($event)" formControlName="type">
-    <option value="" disabled>Choose your strategy type</option>
-    <option *ngFor="let type of types" [ngValue]="type">{{type}}</option>
-  </select>
-  <br/>
-  <input type = "text"
-        name = "ticker"
-        placeholder = "Ticker"
-        formControlName="ticker"
-        #ticker>
-  <br/>
-  <input type = "number"
-        name = "quantity"
-        placeholder = "Quantity"
-        formControlName="quantity"
-        #quantity>
-  <br/>
-  <input type = "number"
-        name = "slowAvgIntervale"
-        placeholder = "Slow Moving Average"
-        formControlName="slowAvgIntervale"
-        #slowAvgIntervale>
-  <br/>
-  <input type = "number"
-        name = "fastAvgIntervale"
-        placeholder = "Fast Moving Average"
-        formControlName="fastAvgIntervale"
-        #fastAvgIntervale>
-  <br/>
-  <input type = "number"
-        name = "limit"
-        placeholder = "limit"
-        formControlName="limit"
-        #limit>
-  <br/>
-  <input type = "number"
-        name = "quantity"
-        placeholder = "Quantity"
-        formControlName="quantity"
-        #quantity>
-  <br/>
-  <input type = "submit"
-          value = "submit"
-          (click) = "onClickSubmit(name.value,
-                                   type.value,
-                                   ticker.value,
-                                   quantity.value,
-                                   slowAvgIntervale.value,
-                                   fastAvgIntervale.value,
-                                   limit.value,
-                                   stop.value)" >
-</form>
+<div class="strategy-form">
+  <div class="header">
+    New Strategy
+    <a [routerLink]="['']" class="cancel">Cancel</a>
+  </div>
+  <form class="" [formGroup]="strategyForm" (ngSubmit)="onSubmit(strategyForm.value)">
+    <div class="body">
+      <div>
+        <label for="name">
+          Name
+        </label>
+        <input id="name" type="text" formControlName="name">
+      </div>
+      <div>
+        <label for="type">
+          Indicator
+        </label>
+        <select formControlName="type" (change)="changeType($event)">
+          <option value="">Choose Indicator</option>
+          <option value="TMAStrategy">Two Moving Average</option>
+          <option value="BBStrategy">Bollinger Bands</option>
+        </select>
+      </div>
+      <div>
+        <label for="ticker">
+          Ticker
+        </label>
+        <input id="ticker" type="text" formControlName="ticker">
+      </div>
+      <div>
+        <label for="quantity">
+          Quantity
+        </label>
+        <input id="quantity" type="number" formControlName="quantity">
+      </div>
+      <div *ngIf="showBBFields">
+        <div>
+          <label for="timeSpan">
+            Time Span
+          </label>
+          <input id="timeSpan" type="number" formControlName="timeSpan">
+        </div>
+        <div>
+          <label for="std">
+            Standard Deviation
+          </label>
+          <input id="std" type="number" formControlName="std">
+        </div>
+      </div>
+      <div *ngIf="showTMAFields">
+        <div>
+          <label for="slowAvgIntervale">
+            Short Moving Avg. Period
+          </label>
+          <input id="slowAvgIntervale" type="number" formControlName="slowAvgIntervale">
+        </div>
+        <div>
+          <label for="fastAvgIntervale">
+            Long Moving Avg. Period
+          </label>
+          <input id="fastAvgIntervale" type="number" formControlName="fastAvgIntervale">
+        </div>
+      </div>
+      <div>
+        <label for="limit">
+          Take Limit
+        </label>
+        <input id="limit" type="number" formControlName="limit">
+      </div>
+      <div>
+        <label for="stop">
+          Stop Lose
+        </label>
+        <input id="stop" type="number" formControlName="stop">
+      </div>
+    </div>
+    <div class="footer">
+      <button class="button" type="submit" [disabled]='!strategyForm.valid'>Create</button>
+    </div>
+  </form>
+</div>
