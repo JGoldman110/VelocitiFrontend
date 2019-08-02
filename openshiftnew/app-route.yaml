@@ -3,9 +3,9 @@ kind: Route
 metadata:
   name: frontend
 spec:
-  host: velociti2.dev2.conygre.com
+  host: nycteamvelociti.dev2.conygre.com
   port:
     targetPort: '4200'
   to:
     kind: Service
-    name: frontend
+    name: cds-frontend

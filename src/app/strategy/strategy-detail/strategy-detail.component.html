@@ -1,4 +1,5 @@
-<div class="strategy-details">
+<div *ngIf="loadingStrategy" class="loader"></div>
+<div *ngIf="!loadingStrategy" class="strategy-details">
   <h1 *ngIf="strategy">{{ strategy.name }} {{ strategy.totalPnl | currency }}</h1>
   <p *ngIf="strategy">Indicator: <strong>{{ strategy.type }}</strong></p>
   <p *ngIf="strategy">Ticker: <strong>{{ strategy.ticker }}</strong></p>
@@ -32,7 +33,7 @@
     </div>
     <div class="statistics-item">
       <span class="label">Number of Trades</span>
-      <span class="value">2</span>
+      <span class="value">{{orders.length}}</span>
     </div>
   </div>
   <div *ngIf="showTrades" class="trades">

@@ -26,36 +26,11 @@ export class StrategyService {
   }
 
   getStrategy(id): Observable<any> {
-    return this.http.get(this.base_url + '/strategy/getById/' + id)
+    return this.http.get(this.base_url + '/strategy/getById/' + id);
   }
-  // get strategies() {
-  //   return this._strategies.asObservable();
-  // }
-  //
-  // loadAll() {
-  //   this.http.get<any[]>(this.base_url + '/strategy/getAll').subscribe(data => {
-  //     this.dataStore.strategies = data;
-  //     this._strategies.next(Object.assign({}, this.dataStore).strategies);
-  //   }, error => console.log('Could not load strategies.'));
-  // }
-  //
-  // load(id: number) {
-  //   this.http.get<Strategy>(this.base_url + '/strategy/getById' + id).subscribe(data => {
-  //     let notFound = true;
-  //
-  //     this.dataStore.strategies.forEach((item, index) => {
-  //       if (item.id === data.id) {
-  //         this.dataStore.strategies[index] = data;
-  //         notFound = false;
-  //       }
-  //     });
-  //
-  //     if (notFound) {
-  //       this.dataStore.strategies.push(data);
-  //     }
-  //
-  //     this._strategies.next(Object.assign({}, this.dataStore).strategies);
-  //   }, error => console.log('Could not load strategy.'));
-  // }
+
+  createStrategy(strategy): Observable<any> {
+    return this.http.post(this.base_url + '/strategy/create', strategy);
+  }
 
 }
