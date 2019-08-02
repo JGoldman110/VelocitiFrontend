@@ -14,7 +14,7 @@ export class StrategyListComponent implements OnInit {
   strategies: any = [];
 
   constructor( private strategyService: StrategyService ) {
-    interval(1000).subscribe(x => { // will execute every 3 seconds
+    interval(1000).subscribe(x => { // will execute every 1 seconds
       this.updateStrategies();
     });
   }
