@@ -20,6 +20,7 @@ export class StrategyDetailComponent implements OnChanges {
   showDetails:boolean = true;
   showStatitics:boolean = false;
   showTrades:boolean = false;
+  loadingStrategy = false;
 
   constructor(private strategyService: StrategyService,
               private orderService: OrderService) {}
@@ -27,9 +28,10 @@ export class StrategyDetailComponent implements OnChanges {
   ngOnChanges() {
     if (this.strategyId != null){
       // this.updateOrders(this.strategyId);
-      interval(3000).subscribe(x => { // will execute every 3 seconds
+      this.loadingStrategy = true;
+      interval(1000).subscribe(x => { // will execute every 3 seconds
         this.updateStrategy(this.strategyId);
-        this.parseStrategy
+        // this.parseStrategy();
         this.updateOrders(this.strategyId);
       });
     }
@@ -38,8 +40,7 @@ export class StrategyDetailComponent implements OnChanges {
   updateOrders(strategy_id: number) {
     return this.orderService.getOrders(strategy_id).subscribe((data: {}) => {
       this.orders = data;
-      console.log("Updateing orders", this.orders);
-
+      this.loadingStrategy = false;
     })
   }
 
