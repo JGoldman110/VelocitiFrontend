@@ -1,2 +1,3 @@
 <app-strategy-list (strategyClicked)="childStrategyClicked($event)"></app-strategy-list>
-<app-strategy-detail [strategyId]="clickedStrategyId"></app-strategy-detail>
+<app-statistics *ngIf="showStatistics"></app-statistics>
+<app-strategy-detail [strategyId]="clickedStrategyId" *ngIf="!showStatistics"></app-strategy-detail>

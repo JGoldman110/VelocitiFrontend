@@ -1,0 +1,55 @@
+.overview {
+  float: right;
+  min-width: 660px;
+}
+
+.stat {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 18px;
+  margin: 10px;
+  min-width: 158px;
+  max-height: 115px;
+}
+
+.margin {
+  font-size: 13px;
+  position: relative;
+  top: 13px;
+  padding-top: 7px;
+  padding-bottom: 25px;
+}
+
+.positive {
+  color: #21ce99;
+}
+
+.negative {
+  color: #f45531;
+}
+
+.status {
+  text-align: center;
+  font-size: 12px;
+}
+
+.status.ACTIVE {
+  color: #21ce99;
+  background: #182b27;
+  padding: 7px;
+  border-radius: 225px;
+}
+
+.status.PAUSED {
+  color: #E4E111;
+  background: #3c3918;
+  padding: 7px;
+  border-radius: 225px;
+}
+
+.status.EXITED, .status.FINISHED {
+  color: #f45531;
+  background: #2d201f;;
+  padding: 7px;
+  border-radius: 225px;
+}

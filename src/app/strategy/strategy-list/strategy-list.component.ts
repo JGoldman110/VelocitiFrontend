@@ -20,7 +20,6 @@ export class StrategyListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.updateStrategies();
   }
 
   updateStrategies() {

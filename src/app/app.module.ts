@@ -11,6 +11,7 @@ import { StrategyListComponent } from './strategy/strategy-list/strategy-list.co
 import { StrategyDetailComponent } from './strategy/strategy-detail/strategy-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StrategyCreateComponent } from './strategy/strategy-create/strategy-create.component';
+import { StatisticsComponent } from './dashboard/statistics/statistics.component';
 
 import { StrategyService } from './service/strategy.service';
 import { OrderService } from './service/order.service';
@@ -24,7 +25,8 @@ import { ChartsModule } from 'ng2-charts';
     StrategyListComponent,
     StrategyDetailComponent,
     DashboardComponent,
-    StrategyCreateComponent
+    StrategyCreateComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
