@@ -1,6 +1,10 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
 .strategies {
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(0, 0, 0, 0.6);
-  width: 350px;
+  width: 645px;
   float: left;
   height: 550px;
 }
