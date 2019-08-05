@@ -5,15 +5,24 @@
   <p *ngIf="strategy">Strategy Type: <strong>{{ strategy.type }}</strong></p>
   <p *ngIf="strategy">Ticker: <strong>{{ strategy.ticker }}</strong></p>
   <p *ngIf="strategy" class="status {{strategy.status}}"></p>
-  <div class="preformance-graph">
-
+  <div *ngIf="strategy" class="preformance-graph">
+    <canvas
+        baseChart
+        [chartType]="'line'"
+        [datasets]="chartData"
+        [labels]="chartLabels"
+        [colors]="lineChartColors"
+        [options]="chartOptions"
+        [legend]="false"
+        (chartClick)="onChartClick($event)">
+    </canvas>
   </div>
-  <div class="menu">
+  <div *ngIf="strategy" class="menu">
     <a (click)="toggelDetails()" [ngClass]="showDetails ? 'active' : ''">Details</a>
     <a (click)="toggelStatistics()" [ngClass]="showStatitics ? 'active' : ''">Statistics</a>
     <a (click)="toggelTrades()" [ngClass]="showTrades ? 'active' : ''">Trades</a>
   </div>
-  <div *ngIf="showDetails" class="details">
+  <div *ngIf="showDetails && strategy" class="details">
     <h1>Details</h1>
     <div class="statistics-item">
       <span class="label">Strategy Name</span>
@@ -56,7 +65,7 @@
       <span class="value">{{strategy.quantity}} shared</span>
     </div>
   </div>
-  <div *ngIf="showStatitics" class="statistics">
+  <div *ngIf="showStatitics && strategy" class="statistics">
     <h1>Statistics</h1>
     <div class="statistics-item">
       <span class="label">Initial Capital</span>
@@ -75,7 +84,7 @@
       <span class="value">{{orders.length}}</span>
     </div>
   </div>
-  <div *ngIf="showTrades" class="trades">
+  <div *ngIf="showTrades && strategy" class="trades">
     <h1>Trades</h1>
     <table class="trades-table">
       <tr class="trades-table-header">

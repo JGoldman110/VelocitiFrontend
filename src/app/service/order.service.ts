@@ -25,7 +25,7 @@ export class OrderService {
     // this._strategies = <BehaviorSubject<Strategy[]>>new BehaviorSubject([]);
   }
 
-  getOrders(strategy_id: number): Observable<any> {
+  getOrders(strategy_id: number) {
     return this.http.get(this.base_url + '/orders/getByIdDesc/' + strategy_id);
   }
 
