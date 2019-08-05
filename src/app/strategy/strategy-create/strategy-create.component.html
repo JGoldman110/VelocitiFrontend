@@ -25,7 +25,10 @@
         <label for="ticker">
           Ticker
         </label>
-        <input id="ticker" type="text" formControlName="ticker">
+        <select formControlName="ticker">
+          <option value="">Choose Indicator</option>
+          <option *ngFor="let ticker of tickers" value="{{ticker.symbol}}">{{ticker.symbol}} - {{ticker.companyName}}</option>
+        </select>
       </div>
       <div>
         <label for="quantity">

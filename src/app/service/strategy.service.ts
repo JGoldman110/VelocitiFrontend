@@ -33,4 +33,8 @@ export class StrategyService {
     return this.http.post(this.base_url + '/strategy/create', strategy);
   }
 
+  getTickers(): Observable<any> {
+    return this.http.get('http://nyc31.conygre.com:31/Stock/getSymbolListOrderedBySymbol');
+  }
+
 }
