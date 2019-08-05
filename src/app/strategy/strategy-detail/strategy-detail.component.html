@@ -5,6 +5,8 @@
   <p *ngIf="strategy">Strategy Type: <strong>{{ strategy.type }}</strong></p>
   <p *ngIf="strategy">Ticker: <strong>{{ strategy.ticker }}</strong></p>
   <p *ngIf="strategy" class="status {{strategy.status}}"></p>
+  <a *ngIf="strategy.status == 'ACTIVE'" class="pause" (click)="pause(strategy.id)">Pause</a>
+  <a *ngIf="strategy.status == 'PAUSED'" class="play" (click)="start(strategy.id)">Start</a>
   <div *ngIf="strategy" class="preformance-graph">
     <canvas
         baseChart
@@ -62,7 +64,7 @@
     </div>
     <div class="statistics-item">
       <span class="label">Position Quantity</span>
-      <span class="value">{{strategy.quantity}} shared</span>
+      <span class="value">{{strategy.quantity}} shares</span>
     </div>
   </div>
   <div *ngIf="showStatitics && strategy" class="statistics">
@@ -97,7 +99,7 @@
         <th align="left">PNL %</th>
       </tr>
       <tr class="trade-row" *ngFor="let order of orders">
-        <td>{{order.buy ? 'Buy' : 'Sell'}}</td>
+        <td [ngClass]="order.buy ? 'positive' : 'negative'">&#183;{{order.buy ? 'Buy' : 'Sell'}}</td>
         <td>NASDAQ</td>
         <td>{{strategy.quantity}}</td>
         <td>{{order.price | currency}}</td>

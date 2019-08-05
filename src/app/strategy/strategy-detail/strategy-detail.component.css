@@ -147,3 +147,15 @@ td {
 .negative {
   color: #f45531;
 }
+
+.pause {
+  margin: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.play {
+  margin: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}

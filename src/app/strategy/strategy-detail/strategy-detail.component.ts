@@ -154,4 +154,16 @@ export class StrategyDetailComponent implements OnChanges {
     this.showTrades = true;
   }
 
+  pause(id){
+    return this.strategyService.pauseById(id).subscribe( x => {
+      this.loadingStrategy = true;
+    });
+  }
+
+  start(id){
+    return this.strategyService.startById(id).subscribe( x => {
+      this.loadingStrategy = true;
+    });
+  }
+
 }
