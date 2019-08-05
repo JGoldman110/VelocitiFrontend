@@ -12,6 +12,7 @@ export class StrategyCreateComponent implements OnInit {
   showTMAFields: boolean = false;
   showBBFields: boolean = false;
   strategyForm: FormGroup;
+  tickers: any;
 
   constructor(private formBuilder: FormBuilder,
               private strategyService: StrategyService,
@@ -35,7 +36,6 @@ export class StrategyCreateComponent implements OnInit {
   }
 
   onSubmit(values) {
-    console.log(values);
     this.strategyService.createStrategy(values).subscribe(
       strategy => {
         console.log(strategy);
@@ -100,5 +100,9 @@ export class StrategyCreateComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    return this.strategyService.getTickers().subscribe((data: {}) => {
+      this.tickers = data;
+    })
+  }
 }

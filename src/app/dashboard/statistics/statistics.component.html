@@ -1,0 +1,32 @@
+<div class="overview">
+  <div class="stats">
+    <div class="stat">
+      <p>Total Preformance (%)</p>
+      <h1 [ngClass]="(totalPerformancePercent >=0 ) ? 'positive' : 'negative'">{{ totalPerformancePercent | percent:'.2-3'}}</h1>
+    </div>
+    <div class="stat">
+      <p>Total Preformance ($)</p>
+      <h1 [ngClass]="(totalPerformanceMoney >=0 ) ? 'positive' : 'negative'">{{totalPerformanceMoney | currency}}</h1>
+    </div>
+    <div class="stat margin">
+      <p class="status ACTIVE">{{active}} Active</p>
+      <p class="status PAUSED">{{paused}} Paused</p>
+      <p class="status EXITED">{{exited}} Exited</p>
+    </div>
+  </div>
+  <div class="graph">
+    <canvas
+        baseChart
+        [chartType]="'line'"
+        [datasets]="chartData"
+        [labels]="chartLabels"
+        [colors]="lineChartColors"
+        [options]="chartOptions"
+        [legend]="false"
+        (chartClick)="onChartClick($event)">
+    </canvas>
+  </div>
+  <div class="top-preformers">
+
+  </div>
+</div>

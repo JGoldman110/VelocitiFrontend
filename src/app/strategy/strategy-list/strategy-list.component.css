@@ -107,3 +107,11 @@ button:focus {
 .status.FINISHED:after {
   content: 'Finished';
 }
+
+.positive {
+  color: #21ce99;
+}
+
+.negative {
+  color: #f45531;
+}

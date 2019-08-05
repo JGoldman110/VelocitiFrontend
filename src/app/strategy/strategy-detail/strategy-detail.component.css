@@ -139,3 +139,23 @@ td {
 .status.FINISHED:after {
   content: 'Finished';
 }
+
+.positive {
+  color: #21ce99;
+}
+
+.negative {
+  color: #f45531;
+}
+
+.pause {
+  margin: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.play {
+  margin: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}

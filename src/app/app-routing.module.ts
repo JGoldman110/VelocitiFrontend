@@ -10,6 +10,10 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+  {
     path: 'strategy/new',
     component: StrategyCreateComponent
   }
